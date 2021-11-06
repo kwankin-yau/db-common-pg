@@ -1,0 +1,48 @@
+plugins {
+    id 'java-library'
+    id 'scala'
+    id 'maven-publish'
+}
+
+group 'com.lucendar.common'
+version '1.0.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation('org.scala-lang:scala-library:2.13.6')
+    implementation('org.scala-lang:scala-reflect:2.13.6')
+
+    implementation('com.typesafe.scala-logging:scala-logging_2.13:3.9.4')
+
+    api 'com.lucendar.common:db-common:1.0.0'
+
+    api ('org.postgresql:postgresql:42.2.24')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+}
+
