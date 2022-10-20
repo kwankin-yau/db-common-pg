@@ -21,7 +21,7 @@ dependencies {
 
     implementation('com.typesafe.scala-logging:scala-logging_2.13:3.9.4')
 
-    api 'com.lucendar.common:db-common:1.0.3'
+    api 'com.lucendar.common:db-common:1.0.4'
 
 //    api 'org.postgresql:postgresql:42.2.25'
     api 'org.postgresql:postgresql:42.3.7'
