@@ -23,4 +23,6 @@ object SqlDialect_Pg extends SqlDialect {
       st.execute("SET CONSTRAINTS ALL DEFERRED")
     }
   }
+
+  override def supportSingleStatementPagination: Boolean = true
 }
