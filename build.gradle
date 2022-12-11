@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.lucendar.common'
-version '1.0.4'
+version '1.0.5'
 
 repositories {
     mavenLocal()
@@ -17,14 +17,14 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
     implementation('org.scala-lang:scala-library:2.13.10')
-    implementation('org.scala-lang:scala-reflect:2.13.8')
+    implementation('org.scala-lang:scala-reflect:2.13.10')
 
     implementation('com.typesafe.scala-logging:scala-logging_2.13:3.9.4')
 
-    api 'com.lucendar.common:db-common:1.0.4'
+    api 'com.lucendar.common:db-common:1.0.5'
 
 //    api 'org.postgresql:postgresql:42.2.25'
-    api 'org.postgresql:postgresql:42.3.7'
+    api 'org.postgresql:postgresql:42.3.8'
 }
 
 test {

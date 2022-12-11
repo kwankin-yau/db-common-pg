@@ -1,3 +1,10 @@
+# 1.0.5 - [2022-12-11]
+## Changed
+- Dependencies:
+  - Bump `scala-reflect` to 2.13.10
+  - Bump `db-common` to 1.0.5
+  - Bump `postgresql` to 42.3.8
+
 # 1.0.4 - [2022-10-20]
 ## Fixed
 - com.lucendar.common.db.pg.SqlDialect_Pg.supportSingleStatementPagination should return true
