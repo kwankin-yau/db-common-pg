@@ -37,6 +37,23 @@ task sourceJar(type: Jar) {
 }
 
 publishing {
+    repositories {
+        maven {
+            if (project.version.toString().endsWith("-SNAPSHOT")) {
+                name = "snapshotsRepo"
+                url = "https://wx.gratour.info:7999/repository/maven-snapshots/"
+            } else {
+                name = "releasesRepo"
+                url = "https://wx.gratour.info:7999/repository/my-nexus/"
+            }
+
+            credentials {
+                username = "${ossUser}"
+                password = "${ossPwd}"
+            }
+        }
+    }
+
     publications {
         maven(MavenPublication) {
             from components.java
