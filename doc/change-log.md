@@ -1,3 +1,8 @@
+# 1.0.6 - [2023-08-25]
+## Improvement
+- Add `PgDbInfo` and parse method.
+- Add `BackupRunner`
+
 # 1.0.5 - [2022-12-11]
 ## Changed
 - Dependencies:
