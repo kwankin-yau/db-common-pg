@@ -1,3 +1,9 @@
+# 1.1.0 - [2023-11-19]
+## Changed
+- Dependencies:
+  - Upgrade to Java 17
+  - Bump `db-common` to 1.1.0
+
 # 1.0.6 - [2023-08-25]
 ## Improvement
 - Add `PgDbInfo` and parse method.
