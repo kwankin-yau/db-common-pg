@@ -11,7 +11,7 @@ trait BackupRunnerCallback {
    * @param exitCode Exit code of `pg_dump` command.
    * @param errors   Error messages. null if no error.
    */
-  def backupComplete(exitCode: Int, errors: java.util.List[String])
+  def backupComplete(exitCode: Int, errors: java.util.List[String]): Unit
 }
 
 class BackupRunner(

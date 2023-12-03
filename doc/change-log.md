@@ -1,3 +1,10 @@
+# 2.0.0 - [2023-12-03]
+## Changed
+- Maven group ID changed to `com.lucendar`
+- Dependencies
+  - Bump `db-common` to 2.0.0
+  - Bump `postgresql` to 42.5.4
+
 # 1.1.0 - [2023-11-19]
 ## Changed
 - Dependencies:
