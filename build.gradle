@@ -2,13 +2,13 @@ plugins {
     id 'java-library'
     id 'scala'
     id 'maven-publish'
+    id 'signing'
 }
 
 group 'com.lucendar'
-version '2.0.0-SNAPSHOT'
+version '2.0.0'
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
@@ -21,7 +21,7 @@ dependencies {
 
     implementation('com.typesafe.scala-logging:scala-logging_2.13:3.9.5')
 
-    api 'com.lucendar:db-common:2.0.0-SNAPSHOT'
+    api 'com.lucendar:db-common:2.0.0'
 
     api 'org.postgresql:postgresql:42.5.4'
 }
@@ -30,34 +30,56 @@ test {
     useJUnitPlatform()
 }
 
-task sourceJar(type: Jar) {
-    from sourceSets.main.allSource
-    archiveClassifier = 'sources'
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 publishing {
-    repositories {
-        maven {
-            if (project.version.toString().endsWith("-SNAPSHOT")) {
-                name = "snapshotsRepo"
-                url = "${snapshotUrl}"
-            } else {
-                name = "releasesRepo"
-                url = "${releaseUrl}"
-            }
-
-            credentials {
-                username = "${ossUser}"
-                password = "${ossPwd}"
-            }
-        }
-    }
-
     publications {
         maven(MavenPublication) {
             from components.java
-            artifact sourceJar
+
+            pom {
+                name = 'db-common-pg'
+                packaging = 'jar'
+                // optionally artifactId can be defined here
+                description = 'Spring Jdbc utility library for PostgreSQL.'
+                url = 'https://github.com/kwankin-yau/db-common-pg'
+
+                scm {
+                    connection = 'https://github.com/kwankin-yau/db-common-pg.git'
+                    developerConnection = 'https://github.com/kwankin-yau/db-common-pg.git'
+                    url = 'https://github.com/kwankin-yau/db-common-pg'
+                }
+
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'http://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'kky'
+                        name = 'kwankin-yau'
+                        email = 'alphax@vip.163.com'
+                    }
+                }
+            }
         }
     }
 }
 
+javadoc {
+    options.encoding = 'UTF-8'
+
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
+
+signing {
+    sign publishing.publications.maven
+}
