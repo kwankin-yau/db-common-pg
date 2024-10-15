@@ -40,6 +40,4 @@ object SqlDialect_Pg extends SqlDialect {
   }
 
   override def supportSingleStatementPagination: Boolean = true
-
-  SqlDialects.register(SqlDialect_Pg)
 }
