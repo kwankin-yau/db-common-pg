@@ -1,6 +1,7 @@
 # 2.1.0 [2024-03-04]
 ## 改进
 - 引入 `ServerVer` （数据库）服务端版本号
+- Add SqlDialect registration
 
 # 2.0.0 - [2023-12-03]
 ## Changed
